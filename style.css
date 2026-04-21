@@ -1,135 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;600;900&display=swap');
 
 :root {
     --purple: #6a3093;
     --lime: #b4d433;
-    --dark: #0a0a0a;
-    --glass: rgba(255, 255, 255, 0.03);
-    --border: rgba(255, 255, 255, 0.1);
+    --dark: #080808;
+    --white: #ffffff;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background-color: var(--dark);
-    color: white;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    line-height: 1.6;
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
     overflow-x: hidden;
 }
 
-/* Interaktiver Hintergrund-Verlauf */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at 10% 20%, rgba(106, 48, 147, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(180, 212, 51, 0.1) 0%, transparent 40%);
-    z-index: -1;
-}
-
-/* NAVIGATION (Modern & Schwebend) */
+/* Navigations-Leiste */
 header {
     position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 1200px;
-    background: rgba(15, 15, 15, 0.8);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 15px 30px;
+    width: 100%;
+    top: 0;
     z-index: 1000;
+    padding: 20px 5%;
+    background: rgba(8, 8, 8, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: 'Syncopate', sans-serif; font-size: 1.2rem; color: var(--lime); }
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links a { text-decoration: none; color: white; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
 
-.logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -1px; }
-.logo span { color: var(--lime); }
-
-.nav-links { display: flex; list-style: none; gap: 25px; }
-.nav-links a { 
-    text-decoration: none; color: #ccc; font-size: 0.9rem; font-weight: 500;
-    transition: 0.3s;
-}
-.nav-links a:hover { color: var(--lime); }
-
-/* HERO SEKTION */
-.hero {
-    height: 100vh;
+/* Hero-Sektion */
+.project-hero {
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
     padding: 0 10%;
+    background: linear-gradient(to right, rgba(8,8,8,1), rgba(8,8,8,0)), url('dein-bild.png') center/cover;
 }
 
 h1 {
-    font-size: clamp(3rem, 10vw, 7rem);
-    font-weight: 800;
-    line-height: 0.9;
+    font-family: 'Syncopate', sans-serif;
+    font-size: clamp(3rem, 10vw, 8rem);
+    line-height: 0.8;
     margin-bottom: 20px;
-    background: linear-gradient(to bottom, #fff 40%, var(--purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
 }
 
-.hero p { font-size: 1.2rem; color: #888; max-width: 600px; margin-bottom: 40px; }
+.highlight { color: var(--purple); }
 
-/* BILDER-GRID (Interaktiv) */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 0 5% 100px;
-}
+/* Voten Button - Catchy & Pulsierend */
+.vote-section { padding: 50px 10%; background: var(--purple); text-align: center; }
 
-.card {
-    height: 400px;
-    border-radius: 30px;
-    background: var(--glass);
-    border: 1px solid var(--border);
-    overflow: hidden;
-    position: relative;
-    transition: 0.5s ease;
-}
-
-.card:hover {
-    transform: translateY(-10px) scale(1.02);
-    border-color: var(--lime);
-}
-
-.card img {
-    width: 100%; height: 100%; object-fit: cover;
-    opacity: 0.6; transition: 0.5s;
-}
-
-.card:hover img { opacity: 1; transform: scale(1.1); }
-
-.card-content {
-    position: absolute;
-    bottom: 0; left: 0; padding: 30px;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    width: 100%;
-}
-
-/* BUTTON */
-.cta {
-    padding: 15px 35px;
+.btn-vote {
+    display: inline-block;
+    padding: 25px 60px;
     background: var(--lime);
     color: var(--dark);
-    border-radius: 50px;
-    font-weight: 800;
     text-decoration: none;
+    font-weight: 900;
+    font-size: 1.5rem;
+    border-radius: 100px;
+    box-shadow: 0 0 40px rgba(180, 212, 51, 0.5);
     transition: 0.3s;
+    animation: pulse 2s infinite;
 }
-.cta:hover { box-shadow: 0 0 30px rgba(180, 212, 51, 0.4); transform: scale(1.05); }
 
-/* MOBILE NAVIGATION (Hamburger-Ersatz für Einfachheit) */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.btn-vote:hover { transform: scale(1.1); background: white; }
+
+/* Content-Layout */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    padding: 100px 10%;
+    align-items: center;
+}
+
+.project-info h2 { font-family: 'Syncopate', sans-serif; font-size: 2.5rem; margin-bottom: 20px; color: var(--lime); }
+.project-info p { font-size: 1.2rem; line-height: 1.8; color: #ccc; }
+
+.image-frame {
+    border: 10px solid var(--purple);
+    border-radius: 20px;
+    overflow: hidden;
+    transform: rotate(3deg);
+}
+
+.image-frame img { width: 100%; display: block; }
+
 @media (max-width: 768px) {
-    .nav-links { display: none; } /* Wir nutzen ein Symbol auf dem Handy */
-    h1 { font-size: 3.5rem; }
+    .content-grid { grid-template-columns: 1fr; gap: 50px; }
+    h1 { font-size: 4rem; }
 }
