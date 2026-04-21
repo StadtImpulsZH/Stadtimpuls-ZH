@@ -123,17 +123,24 @@
             opacity: 0; z-index: 4; cursor: ew-resize;
         }
 
+        /* Das Icon im Schieber */
         .handle-circle {
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 50px; height: 50px;
+            width: 54px; height: 54px;
             background: white;
             border-radius: 50%;
             z-index: 3;
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.25);
             pointer-events: none;
+        }
+        
+        .handle-circle svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--purple);
         }
 
         /* --- INFO & VOTE --- */
@@ -157,7 +164,7 @@
         footer { padding: 60px; text-align: center; color: #aaa; font-size: 0.8rem; letter-spacing: 2px; }
 
         @media (max-width: 768px) {
-            nav ul { display: none; } /* Mobile Menu Placeholder */
+            nav ul { display: none; } 
             h1 { font-size: 3rem; }
             .section-light { padding: 60px 5%; }
         }
@@ -194,10 +201,17 @@
                 <div class="after-image" id="after-box">
                     <img src="IMG_2031.png" alt="Nachher">
                 </div>
-                <div class="handle-circle" id="handle">↔</div>
+                
+                <div class="handle-circle" id="handle">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41zM15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" transform="rotate(180 12 12)"/>
+                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                    </svg>
+                </div>
+
                 <input type="range" min="0" max="100" value="50" class="slider-input" oninput="moveSlider(this.value)">
             </div>
-            <p style="margin-top: 20px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #999;">← Schieben für den Vorher-Nachher Vergleich →</p>
+            <p style="margin-top: 20px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #999; text-align: center;">← Schieben für den Vorher-Nachher Vergleich →</p>
         </div>
 
         <section class="section-light" id="voting" style="text-align: center;">
