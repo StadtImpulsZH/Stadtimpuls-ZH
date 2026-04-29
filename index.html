@@ -66,8 +66,10 @@
         }
         .preview-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: 0.6s; }
         .preview-card:hover img { transform: scale(1.05); }
-        .preview-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%); z-index: -1; }
-        .preview-card h2 { font-family: 'Space Grotesk'; color: white; font-size: 2.5rem; margin-bottom: 20px; }
+        .preview-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 70%); z-index: -1; }
+        
+        .preview-card h2 { font-family: 'Space Grotesk'; color: white; font-size: 2.5rem; margin-bottom: 5px; }
+        .preview-teaser { color: rgba(255,255,255,0.8); font-size: 0.95rem; margin-bottom: 25px; max-width: 280px; line-height: 1.4; }
         
         .card-btns { display: flex; gap: 10px; }
         .btn-s { padding: 12px 24px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.75rem; text-decoration: none; border: none; cursor: pointer; display: inline-block; }
@@ -78,18 +80,17 @@
         .detail-view { display: none; padding: 120px 5%; max-width: 1200px; margin: 0 auto; animation: fadeIn 0.8s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        .back-link { cursor: pointer; font-weight: 800; text-transform: uppercase; font-size: 0.75rem; margin-bottom: 40px; display: inline-flex; align-items: center; gap: 10px; opacity: 0.4; }
+        .back-link { cursor: pointer; font-weight: 800; text-transform: uppercase; font-size: 0.75rem; margin-bottom: 40px; display: inline-flex; align-items: center; gap: 10px; opacity: 0.4; transition: 0.3s; }
+        .back-link:hover { opacity: 1; color: var(--purple); }
         .project-header h2 { font-family: 'Space Grotesk'; font-size: clamp(3rem, 10vw, 6rem); line-height: 0.9; margin-bottom: 20px; }
         .project-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: start; }
         .project-main-content h3 { font-family: 'Space Grotesk'; font-size: 1.8rem; margin: 40px 0 20px; color: var(--purple); position: relative; }
-        
-        /* TEXT-ANPASSUNG: Linksbuendig statt Blocksatz */
         .project-main-content p { font-size: 1.1rem; margin-bottom: 25px; color: #333; text-align: left; }
         .project-main-content i { display: block; border-left: 3px solid var(--lime); padding-left: 20px; margin: 30px 0; font-style: normal; opacity: 0.7; font-size: 0.95rem; }
         
         .project-sidebar-visuals { position: sticky; top: 120px; }
 
-        /* --- KARUSSELL & SLIDER --- */
+        /* --- VISUALS (KARUSSELL / SLIDER) --- */
         .carousel-container { position: relative; width: 100%; aspect-ratio: 4/5; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .carousel-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s; }
         .carousel-slide.active { opacity: 1; z-index: 1; }
@@ -99,34 +100,30 @@
         .dot { width: 12px; height: 12px; background: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; }
         .dot.active { background: white; transform: scale(1.2); }
 
-        /* MODERNER SLIDER */
         .slider-wrap { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 24px; overflow: hidden; }
         .slider-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
         #slider-front { clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); }
         .slider-bar { position: absolute; top: 0; left: 50%; width: 1px; height: 100%; background: rgba(255,255,255,0.8); transform: translateX(-50%); pointer-events: none; }
-        .slider-handle { 
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-            width: 50px; height: 50px; background: white; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid rgba(0,0,0,0.05);
-        }
-        /* Moderne Pfeile (zwei Linien) */
-        .slider-handle::before, .slider-handle::after {
-            content: ''; width: 2px; height: 12px; background: var(--purple); position: absolute; border-radius: 2px;
-        }
+        .slider-handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid rgba(0,0,0,0.05); }
+        .slider-handle::before, .slider-handle::after { content: ''; width: 2px; height: 12px; background: var(--purple); position: absolute; border-radius: 2px; }
         .slider-handle::before { transform: translateX(-6px); }
         .slider-handle::after { transform: translateX(6px); }
-
         .slider-input { position: absolute; inset: 0; opacity: 0; cursor: ew-resize; width: 100%; z-index: 10; }
 
-        /* --- MITWIRKEN --- */
+        /* --- MITWIRKEN (NEU) --- */
         #mitwirken { padding: 120px 5%; background: var(--gray); text-align: center; }
-        .mitwirken-container { max-width: 1100px; margin: 0 auto; }
-        .process-path { display: flex; justify-content: space-between; align-items: flex-start; position: relative; margin: 80px 0; }
+        .mitwirken-container { max-width: 900px; margin: 0 auto; }
+        .mitwirken-tag { font-family: 'Space Grotesk'; font-size: 1.2rem; color: var(--purple); margin-bottom: 10px; font-weight: 800; display: block; }
+        .mitwirken-container h2 { font-family: 'Space Grotesk'; font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.2; margin-bottom: 25px; }
+        .mitwirken-themes { font-size: 1.1rem; opacity: 0.7; margin-bottom: 40px; font-weight: 500; }
+        
+        .process-path { display: flex; justify-content: space-between; align-items: flex-start; position: relative; margin: 60px 0; }
         .process-path::before { content: ''; position: absolute; top: 45px; left: 10%; right: 10%; height: 2px; background: #ddd; z-index: 0; }
         .process-step { flex: 1; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
         .step-icon { width: 90px; height: 90px; background: var(--gray); border: 2px solid #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin-bottom: 20px; position: relative; z-index: 2; }
-        .step-label { font-weight: 800; font-size: 0.85rem; text-transform: uppercase; color: #333; max-width: 150px; background: var(--gray); padding: 5px 10px; position: relative; z-index: 2; }
+        .step-label { font-weight: 800; font-size: 0.8rem; text-transform: uppercase; color: #333; max-width: 140px; background: var(--gray); padding: 5px 10px; position: relative; z-index: 2; }
+
+        .zueri-quote { font-style: italic; font-size: 1.1rem; margin: 40px 0; color: var(--text); opacity: 0.8; border-top: 1px solid #ddd; padding-top: 20px; display: inline-block; }
 
         @media (max-width: 768px) {
             .process-path { flex-direction: column; align-items: center; gap: 60px; }
@@ -171,6 +168,7 @@
                 <div class="preview-card" onclick="openProject('tauschpunkt')">
                     <img src="Bild.tauschpunkt1.png" alt="tauschpunkt.">
                     <h2>tauschpunkt.</h2>
+                    <p class="preview-teaser">Einfache Tausch-Stationen für Alltagsgegenstände im öffentlichen Raum.</p>
                     <div class="card-btns">
                         <span class="btn-s btn-white">Entdecken</span>
                         <a href="https://mitwirken.stadt-zuerich.ch/processes/pilotquartier/f/664/proposals/2298" target="_blank" class="btn-s btn-lime" onclick="event.stopPropagation()">Voten</a>
@@ -179,7 +177,8 @@
 
                 <div class="preview-card" onclick="openProject('playground')">
                     <img src="IMG_2031.png" alt="Playground">
-                    <h2>Playground<br>Binzallee</h2>
+                    <h2>Playground Binzallee</h2>
+                    <p class="preview-teaser">Klimawirksame Begrünung und kühlende Strukturen für urbane Innenhöfe.</p>
                     <div class="card-btns">
                         <span class="btn-s btn-white">Entdecken</span>
                         <a href="https://mitwirken.stadt-zuerich.ch/processes/pilotquartier/f/664/proposals/2334" target="_blank" class="btn-s btn-lime" onclick="event.stopPropagation()">Voten</a>
@@ -190,14 +189,19 @@
 
         <section id="mitwirken">
             <div class="mitwirken-container">
-                <h2>Mitwirken.</h2>
-                <p>Hast Du etwas in Deinem Kreis oder Quartier neu, weiter oder zu Ende gedacht? <br>Bringe Deine Idee ein. Züri mitentwickeln und präge!</p>
+                <span class="mitwirken-tag">Open Space Impulse St.Zürich</span>
+                <h2>Hast Du etwas in Deinem Kreis oder Quartier neu-weiter-zuende-gedacht?</h2>
+                <p class="mitwirken-themes">Bringe Deine Idee zu Themen wie; Gestaltung. Begegnung. Klima. Qualität. Bewegung. Mobilität. Sozialprojekte. Unterhaltung. Uvm..</p>
+                
                 <div class="process-path">
                     <div class="process-step"><div class="step-icon">✨</div><div class="step-label">Teile Deine Vision</div></div>
                     <div class="process-step"><div class="step-icon">🔥</div><div class="step-label">Erwecke Faszination</div></div>
                     <div class="process-step"><div class="step-icon">🤝</div><div class="step-label">Finde Mitbestreiter</div></div>
                     <div class="process-step"><div class="step-icon">🏙️</div><div class="step-label">Präge das Stadtleben</div></div>
                 </div>
+
+                <p class="zueri-quote">Züri mitentwickle und präge, jede Ahstoss zellt zumne no bessere Züri</p>
+                <br>
                 <a href="mailto:stadt@impulzh.com" class="btn-s btn-lime" style="padding: 20px 40px; text-decoration: none;">Idee einreichen</a>
             </div>
         </section>
@@ -221,7 +225,6 @@
                 <p>„tauschpunkt.“ steht für einfache Tausch-Stationen im öffentlichen Raum, an denen gebrauchte Alltagsgegenstände gratis weitergegeben werden können. Die Idee baut auf der bestehenden Praxis von „Gratis“-Objekten auf der Strasse auf und entwickelt sie weiter – mit wettergeschützter, klar gestalteter und legaler Infrastruktur.</p>
                 <p>Ein Netzwerk solcher Stationen fördert Ressourcenschonung, Kreislaufwirtschaft und nachbarschaftlichen Austausch. Gleichzeitig entsteht ein offenes Sharing-System für die ganze Stadt, das nachhaltiges Handeln sichtbar und einfach macht.</p>
                 <i>Das Konzept wurde im Rahmen einer Diplomarbeit im Studiengang HF Produktdesign an der SfGZ entwickelt.</i>
-                
                 <h3>Vision tauschpunkt</h3>
                 <p>Eine Stadt, in der Teilen selbstverständlich ist: Öffentliche Tausch-Stationen machen es einfach, gebrauchte Dinge weiterzugeben statt wegzuwerfen – zugänglich für alle, mitten im Alltag.</p>
                 <p>So entsteht ein stadtweites Netzwerk, das Ressourcen schont, Abfall reduziert und Menschen verbindet. Aus spontanen Gesten wird eine gelebte Kultur des Teilens, die Nachbarschaften stärkt und neue Begegnungen ermöglicht.</p>
@@ -239,13 +242,7 @@
                     </div>
                     <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
                     <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
-                    <div class="carousel-dots">
-                        <span class="dot active" onclick="setCarouselSlide(0)"></span>
-                        <span class="dot" onclick="setCarouselSlide(1)"></span>
-                        <span class="dot" onclick="setCarouselSlide(2)"></span>
-                        <span class="dot" onclick="setCarouselSlide(3)"></span>
-                        <span class="dot" onclick="setCarouselSlide(4)"></span>
-                    </div>
+                    <div class="carousel-dots"><span class="dot active" onclick="setCarouselSlide(0)"></span><span class="dot" onclick="setCarouselSlide(1)"></span><span class="dot" onclick="setCarouselSlide(2)"></span><span class="dot" onclick="setCarouselSlide(3)"></span><span class="dot" onclick="setCarouselSlide(4)"></span></div>
                 </div>
             </div>
         </div>
@@ -258,10 +255,9 @@
             <div class="project-main-content">
                 <h3>Konzeptbeschreibung</h3>
                 <p>Der bestehende Innenhof weist eine hohe Versiegelung, starke sommerliche Aufheizung und geringe Aufenthaltsqualität auf. Gleichzeitig besteht ein grosses Potenzial für eine klimawirksame und sozial aktivierende Veränderung dieser Fläche.</p>
-                <p>Der Hof wird zu einem klimaaktiven, multifunktionalen Stadtraum entwickelt – durch die Kombination von klimawirksamer Bodenfläche (helle Farben zur Reduktion der Oberflächentemperatur) und einer schwebenden Begrünungsstruktur. Eine bepflanzte Seilstruktur auf ca. 6–7 m Höhe bildet eine horizontale „grüne Decke“ aus Kletterpflanzen, die für Verschattung und Verdunstungskühlung sorgt.</p>
-                
+                <p>Der Hof wird zu einem klimaaktiven, multifunktionalen Stadtraum entwickelt – durch die Kombination von klimawirksamer Bodenfläche (helle Farben zur Reduktion der Oberflächentemperatur) und einer schwebenden Begrünungsstruktur.</p>
                 <h3>Vision Playground</h3>
-                <p>Das Projekt reduziert Hitzeinseln und verbessert das Mikroklima nachhaltig. Es transformiert einen reinen Durchgangsraum in einen lebendigen, generationenübergreifenden Treffpunkt und schafft eine neue dreidimensionale Raumqualität im Quartier.</p>
+                <p>Das Projekt reduziert Hitzeinseln und verbessert das Mikroklima nachhaltig. Es transformiert einen reinen Durchgangsraum in einen lebendigen Treffpunkt und schafft eine neue dreidimensionale Raumqualität im Quartier.</p>
                 <a href="https://mitwirken.stadt-zuerich.ch/processes/pilotquartier/f/664/proposals/2334" target="_blank" class="btn-s btn-lime" style="text-decoration: none;">Jetzt Voten</a>
             </div>
             <div class="project-sidebar-visuals">
