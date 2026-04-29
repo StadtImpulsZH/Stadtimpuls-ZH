@@ -78,39 +78,62 @@
         .btn-white { background: white; color: var(--text); }
         .btn-lime { background: var(--lime); color: var(--text); }
 
-        /* --- MITWIRKEN (PROCESS DESIGN) --- */
+        /* --- MITWIRKEN (RE-DESIGNED PROCESS) --- */
         #mitwirken { padding: 120px 5%; background: var(--gray); text-align: center; }
         .mitwirken-container { max-width: 1100px; margin: 0 auto; }
         .mitwirken-tag { display: inline-block; padding: 8px 20px; background: white; border-radius: 50px; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--purple); margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .mitwirken-container h2 { font-family: 'Space Grotesk'; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 30px; line-height: 1.1; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .mitwirken-container h2 { font-family: 'Space Grotesk'; font-size: clamp(1.8rem, 5vw, 3.5rem); margin-bottom: 30px; line-height: 1.1; max-width: 900px; margin-left: auto; margin-right: auto; }
         
-        /* Der "Prozess" Pfad */
-        .process-path { display: flex; justify-content: space-between; align-items: flex-start; position: relative; margin: 80px 0; gap: 20px; }
-        .process-path::before { content: ''; position: absolute; top: 45px; left: 10%; right: 10%; height: 2px; background: #ddd; z-index: 0; }
+        /* Prozess Pfad (Web: Horizontal, Mobile: Vertikal) */
+        .process-path { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            position: relative; 
+            margin: 80px 0; 
+            gap: 20px; 
+        }
+
+        /* Die Linie (Desktop) */
+        .process-path::before { 
+            content: ''; 
+            position: absolute; 
+            top: 45px; 
+            left: 10%; 
+            right: 10%; 
+            height: 2px; 
+            background: #ddd; 
+            z-index: 0; 
+        }
         
         .process-step { flex: 1; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
         .step-icon { width: 90px; height: 90px; background: white; border: 2px solid #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 20px; transition: 0.4s; box-shadow: 0 10px 20px rgba(0,0,0,0.03); }
-        .process-step:hover .step-icon { border-color: var(--purple); transform: translateY(-5px); color: var(--purple); }
-        .step-label { font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: #333; max-width: 140px; }
+        .step-label { font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: #333; max-width: 150px; }
 
-        .detail-cta { display: inline-block; padding: 22px 50px; border-radius: 50px; background: var(--purple); color: white; text-decoration: none; font-weight: 800; text-transform: uppercase; transition: 0.3s; margin-top: 20px; box-shadow: 0 15px 30px rgba(106, 48, 147, 0.2); }
+        .detail-cta { display: inline-block; padding: 22px 50px; border-radius: 50px; background: var(--purple); color: white; text-decoration: none; font-weight: 800; text-transform: uppercase; transition: 0.3s; margin-top: 20px; box-shadow: 0 15px 30px rgba(106, 48, 147, 0.2); cursor: pointer; border: none; }
         .detail-cta:hover { transform: scale(1.05); background: #55267a; }
 
+        /* --- MOBILE ANPASSUNG FÜR LINIEN --- */
         @media (max-width: 768px) {
-            .process-path { flex-direction: column; align-items: center; gap: 50px; }
-            .process-path::before { display: none; }
+            .process-path { 
+                flex-direction: column; 
+                align-items: center; 
+                gap: 60px; 
+                margin: 40px 0;
+            }
+            /* Horizontale Linie ausblenden, Vertikale einblenden */
+            .process-path::before { 
+                top: 0; 
+                bottom: 0; 
+                left: 50%; 
+                width: 2px; 
+                height: auto;
+                transform: translateX(-50%); 
+            }
+            .step-icon { margin-bottom: 10px; }
         }
 
-        /* --- RESTLICHE STYLE-ELEMENTE (VON VORHER) --- */
-        .detail-view { display: none; padding: 120px 5%; max-width: 1200px; margin: 0 auto; animation: fadeIn 0.8s ease; }
-        .back-link { cursor: pointer; font-weight: 800; text-transform: uppercase; font-size: 0.75rem; margin-bottom: 40px; display: inline-flex; align-items: center; gap: 10px; opacity: 0.4; }
-        .project-header h2 { font-family: 'Space Grotesk'; font-size: clamp(3rem, 10vw, 6rem); line-height: 0.9; margin-bottom: 20px; }
-        .project-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: start; }
-        .project-main-content h3 { font-family: 'Space Grotesk'; font-size: 1.8rem; margin: 40px 0 20px; color: var(--purple); position: relative; }
-        .project-main-content p { font-size: 1.2rem; margin-bottom: 25px; color: #333; }
         footer { padding: 80px 5%; text-align: center; font-size: 0.75rem; opacity: 0.3; letter-spacing: 3px; text-transform: uppercase; border-top: 1px solid #f0f0f0; }
-
-        /* Slider & Karussell Styles hier einfügen wie im vorherigen Code... */
     </style>
 </head>
 <body>
@@ -189,7 +212,9 @@
                 </div>
             </div>
 
-            <p style="max-width: 700px; margin: 0 auto 40px; color: #666;">Bringe Deine Idee ein – egal ob Gestaltung, Klima, Mobilität oder Sozialprojekte. Jeder Anstoss zählt für ein noch besseres Zürich.</p>
+            <p style="max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem; color: #444; font-weight: 500;">
+                Züri mitentwickle und präge, jede Ahstoss zellt zumne no bessere Züri
+            </p>
             
             <a href="mailto:stadt@impulzh.com" class="detail-cta">Idee einreichen</a>
         </div>
@@ -206,15 +231,11 @@
         }
         function openProject(id) {
             document.getElementById('overview-section').style.display = 'none';
-            document.getElementById('mitwirken').style.display = 'none'; // Optional ausblenden
             document.querySelectorAll('.detail-view').forEach(v => v.style.display = 'none');
-            document.getElementById(id).style.display = 'block';
-            window.scrollTo(0,0);
+            // Hier Detail-Views einblenden falls vorhanden
         }
         function showOverview() {
-            document.querySelectorAll('.detail-view').forEach(v => v.style.display = 'none');
             document.getElementById('overview-section').style.display = 'block';
-            document.getElementById('mitwirken').style.display = 'block';
             window.scrollTo(0,0);
         }
     </script>
