@@ -92,14 +92,24 @@
         .project-main-content p { font-size: 1.2rem; margin-bottom: 25px; color: #333; }
         .project-main-content i { display: block; border-left: 3px solid var(--lime); padding-left: 20px; margin: 30px 0; font-style: normal; opacity: 0.7; }
 
-        /* --- KREATIVE GALERIE --- */
         .project-sidebar-visuals { position: sticky; top: 120px; }
-        .gallery-main { width: 100%; aspect-ratio: 4/5; border-radius: 24px; object-fit: cover; margin-bottom: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); transition: 0.3s; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .gallery-thumb { width: 100%; aspect-ratio: 1/1; border-radius: 12px; object-fit: cover; cursor: pointer; opacity: 0.6; transition: 0.3s; }
-        .gallery-thumb:hover, .gallery-thumb.active { opacity: 1; transform: translateY(-3px); }
+
+        /* --- KARUSSELL (NEU) --- */
+        .carousel-container { position: relative; width: 100%; aspect-ratio: 4/5; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .carousel-slides { width: 100%; height: 100%; position: relative; }
+        .carousel-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease-in-out; }
+        .carousel-slide.active { opacity: 1; z-index: 1; }
         
-        /* --- SLIDER --- */
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: none; width: 44px; height: 44px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; z-index: 2; color: var(--purple); transition: 0.3s; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .carousel-btn:hover { background: white; transform: translateY(-50%) scale(1.1); }
+        .carousel-btn.prev { left: 15px; }
+        .carousel-btn.next { right: 15px; }
+        
+        .carousel-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 2; }
+        .dot { width: 12px; height: 12px; background: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .dot.active { background: white; transform: scale(1.3); }
+
+        /* --- SLIDER (PLAYGROUND) --- */
         .slider-wrap { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 24px; overflow: hidden; }
         .slider-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
         #slider-front { clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); }
@@ -197,14 +207,27 @@
                 <p>Die Vision ist ein Zürich, in dem Kreislaufdenken sichtbar und erlebbar wird – praktisch, sozial und nachhaltig.</p>
                 <a href="https://mitwirken.stadt-zuerich.ch/processes/pilotquartier/f/664/proposals/2298" target="_blank" class="detail-cta">Projekt unterstützen</a>
             </div>
+            
             <div class="project-sidebar-visuals">
-                <img src="Bild.tauschpunkt1.png" id="main-tausch-img" class="gallery-main" alt="tauschpunkt Fokus">
-                <div class="gallery-grid">
-                    <img src="Bild.tauschpunkt1.png" class="gallery-thumb active" onclick="updateGallery(this.src, this)" alt="T1">
-                    <img src="Bild.tauschpunkt2.png" class="gallery-thumb" onclick="updateGallery(this.src, this)" alt="T2">
-                    <img src="Bild.tauschpunkt3.png" class="gallery-thumb" onclick="updateGallery(this.src, this)" alt="T3">
-                    <img src="Bild.tauschpunkt4.png" class="gallery-thumb" onclick="updateGallery(this.src, this)" alt="T4">
-                    <img src="Bild.tauschpunkt1.png" class="gallery-thumb" onclick="updateGallery(this.src, this)" alt="T5">
+                <div class="carousel-container">
+                    <div class="carousel-slides">
+                        <img src="Bild.tauschpunkt1.png" class="carousel-slide active" alt="Tauschpunkt Bild 1">
+                        <img src="Bild.tauschpunkt2.png" class="carousel-slide" alt="Tauschpunkt Bild 2">
+                        <img src="Bild.tauschpunkt3.png" class="carousel-slide" alt="Tauschpunkt Bild 3">
+                        <img src="Bild.tauschpunkt4.png" class="carousel-slide" alt="Tauschpunkt Bild 4">
+                        <img src="Bild.tauschpunkt5.png" class="carousel-slide" alt="Tauschpunkt Bild 5">
+                    </div>
+                    
+                    <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+                    <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+                    
+                    <div class="carousel-dots">
+                        <span class="dot active" onclick="setCarouselSlide(0)"></span>
+                        <span class="dot" onclick="setCarouselSlide(1)"></span>
+                        <span class="dot" onclick="setCarouselSlide(2)"></span>
+                        <span class="dot" onclick="setCarouselSlide(3)"></span>
+                        <span class="dot" onclick="setCarouselSlide(4)"></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -285,14 +308,36 @@
             document.getElementById('overview-section').style.display = 'block';
             window.scrollTo(0,0);
         }
+        
+        /* Playground Vorher/Nachher Slider */
         function moveSlider(val) {
             document.getElementById('slider-front').style.clipPath = `polygon(0 0, ${val}% 0, ${val}% 100%, 0 100%)`;
             document.getElementById('slider-line').style.left = `${val}%`;
         }
-        function updateGallery(src, el) {
-            document.getElementById('main-tausch-img').src = src;
-            document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
-            el.classList.add('active');
+
+        /* Tauschpunkt Bilder Karussell */
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(index) {
+            if (index >= slides.length) currentSlide = 0;
+            else if (index < 0) currentSlide = slides.length - 1;
+            else currentSlide = index;
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function moveCarousel(step) {
+            showSlide(currentSlide + step);
+        }
+
+        function setCarouselSlide(index) {
+            showSlide(index);
         }
     </script>
 </body>
