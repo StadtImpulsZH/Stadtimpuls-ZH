@@ -34,12 +34,8 @@
         .insta-link { color: var(--text); transition: 0.3s; display: flex; align-items: center; }
         .insta-link:hover { color: var(--insta); transform: scale(1.1); }
 
-        /* Hamburger */
         .menu-toggle { cursor: pointer; width: 25px; height: 18px; position: relative; }
-        .hamburger, .hamburger::before, .hamburger::after { 
-            position: absolute; width: 100%; height: 2px; background: var(--text); 
-            transition: 0.3s ease; 
-        }
+        .hamburger, .hamburger::before, .hamburger::after { position: absolute; width: 100%; height: 2px; background: var(--text); transition: 0.3s ease; }
         .hamburger { top: 50%; transform: translateY(-50%); }
         .hamburger::before { content: ''; top: -8px; }
         .hamburger::after { content: ''; top: 8px; }
@@ -62,7 +58,7 @@
         .hero h1 { font-family: 'Space Grotesk'; font-size: clamp(3rem, 8vw, 5rem); line-height: 1; margin-bottom: 20px; }
         .hero p { font-size: 1.2rem; opacity: 0.6; }
 
-        /* --- PROJEKT VORSCHAU --- */
+        /* --- PREVIEW GRID --- */
         .preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; padding: 0 5% 100px; max-width: 1400px; margin: 0 auto; }
         .preview-card {
             position: relative; height: 500px; border-radius: 24px; overflow: hidden;
@@ -75,54 +71,55 @@
         .preview-card h2 { font-family: 'Space Grotesk'; color: white; font-size: 2.2rem; margin-bottom: 15px; }
         
         .card-btns { display: flex; gap: 10px; }
-        .btn-s { padding: 10px 18px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.7rem; text-decoration: none; }
+        .btn-s { padding: 12px 20px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 0.75rem; text-decoration: none; text-align: center; }
         .btn-white { background: white; color: var(--text); }
         .btn-lime { background: var(--lime); color: var(--text); }
 
-        /* --- DETAIL ANSICHT --- */
+        /* --- DETAIL VIEWS --- */
         .detail-view { display: none; padding: 120px 5%; max-width: 1100px; margin: 0 auto; animation: fadeIn 0.5s ease; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .back-link { cursor: pointer; font-weight: 800; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 30px; display: inline-block; opacity: 0.5; transition: 0.3s; }
         .back-link:hover { opacity: 1; color: var(--purple); }
+
+        .detail-content { margin-bottom: 60px; }
+        .detail-content h3 { font-family: 'Space Grotesk'; font-size: 1.8rem; margin: 40px 0 20px; color: var(--purple); }
+        .detail-content p { font-size: 1.15rem; margin-bottom: 20px; color: #444; }
 
         /* --- SLIDER --- */
         .slider-wrap { position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 24px; overflow: hidden; margin: 40px 0; }
         .slider-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
         #slider-front { clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); }
         .slider-bar { position: absolute; top: 0; left: 50%; width: 2px; height: 100%; background: white; transform: translateX(-50%); pointer-events: none; }
-        .slider-handle { 
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-            width: 40px; height: 40px; background: white; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(0,0,0,0.2); 
-        }
+        .slider-handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 44px; height: 44px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(0,0,0,0.2); }
         .slider-handle svg { width: 20px; stroke: var(--purple); }
         .slider-input { position: absolute; inset: 0; opacity: 0; cursor: ew-resize; width: 100%; }
 
-        /* --- NEUE MITWIRKEN SEKTION (MINIMALISTISCH) --- */
-        #mitwirken { padding: 100px 5%; background: var(--gray); text-align: center; }
-        .mitwirken-container { max-width: 800px; margin: 0 auto; }
-        .mitwirken-container h2 { font-family: 'Space Grotesk'; font-size: 3rem; margin-bottom: 30px; }
-        .mitwirken-container p { font-size: 1.25rem; margin-bottom: 25px; line-height: 1.5; }
-        .mitwirken-highlight { font-family: 'Space Grotesk'; font-size: 1.8rem; color: var(--purple); margin: 40px 0; display: block; }
+        /* --- MITWIRKEN (LISTE) --- */
+        #mitwirken { padding: 100px 5%; background: var(--gray); }
+        .mitwirken-container { max-width: 900px; margin: 0 auto; text-align: center; }
+        .mitwirken-container h2 { font-family: 'Space Grotesk'; font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 30px; }
+        .mitwirken-container p { font-size: 1.2rem; margin-bottom: 30px; }
         
+        .modern-list { list-style: none; display: inline-block; text-align: left; margin: 40px 0; }
+        .modern-list li { font-size: 1.3rem; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 15px; }
+        .modern-list li::before { content: ''; width: 25px; height: 2px; background: var(--lime); display: inline-block; }
+
         .mitwirken-actions { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px; }
         .btn-large { padding: 18px 35px; border-radius: 50px; font-weight: 800; text-transform: uppercase; text-decoration: none; transition: 0.3s; }
         .btn-p { background: var(--purple); color: white; }
-        .btn-i { border: 2px solid var(--insta); color: var(--insta); display: flex; align-items: center; gap: 8px; }
 
-        /* --- VISION (HELL) --- */
-        #vision { padding: 100px 5%; text-align: center; border-top: 1px solid #eee; }
-        .vision-container { max-width: 750px; margin: 0 auto; }
-        .vision-container h2 { font-family: 'Space Grotesk'; font-size: 2.5rem; margin-bottom: 20px; }
-        .vision-container p { font-size: 1.1rem; opacity: 0.7; margin-bottom: 20px; }
+        /* --- VISION SEKTION (FULL TEXT) --- */
+        #vision { padding: 120px 5%; border-top: 1px solid #eee; background: white; }
+        .vision-container { max-width: 850px; margin: 0 auto; }
+        .vision-container h2 { font-family: 'Space Grotesk'; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 30px; color: var(--purple); }
+        .vision-container p { font-size: 1.15rem; margin-bottom: 25px; line-height: 1.7; color: #333; }
 
-        footer { padding: 60px 5%; text-align: center; font-size: 0.7rem; opacity: 0.4; letter-spacing: 2px; text-transform: uppercase; }
+        footer { padding: 60px 5%; text-align: center; font-size: 0.7rem; opacity: 0.4; letter-spacing: 2px; text-transform: uppercase; border-top: 1px solid #f0f0f0; }
 
         @media (max-width: 768px) {
-            .preview-card { height: 400px; padding: 25px; }
-            .mitwirken-container h2 { font-size: 2.2rem; }
-            .mitwirken-container p { font-size: 1.1rem; }
+            .preview-card { height: 420px; padding: 25px; }
             .nav-menu a { font-size: 1.8rem; }
+            .modern-list li { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -149,7 +146,7 @@
     <div id="overview-section">
         <section class="hero">
             <h1>Zukunft<br>mitgestalten.</h1>
-            <p>Pilotprojekte für ein nachhaltiges Wiedikon & Binz. <br>Entdecke unsere Visionen für ein klimafreundliches Zürich.</p>
+            <p>Pilotprojekte für ein nachhaltiges Zürich. <br>Entdecke Visionen, die im Quartier wachsen.</p>
         </section>
 
         <section class="preview-grid">
@@ -157,7 +154,7 @@
                 <img src="Bild.tauschpunkt1.png" alt="tauschpunkt.">
                 <h2>tauschpunkt.</h2>
                 <div class="card-btns">
-                    <span class="btn-s btn-white">Details</span>
+                    <span class="btn-s btn-white">Projekt entdecken</span>
                     <a href="https://mitwirken.stadt-zuerich.ch/processes/pilotquartier/f/664/proposals/2298" target="_blank" class="btn-s btn-lime" onclick="event.stopPropagation()">Jetzt Voten</a>
                 </div>
             </div>
@@ -166,7 +163,7 @@
                 <img src="IMG_2031.png" alt="Playground">
                 <h2>Playground<br>Binzallee</h2>
                 <div class="card-btns">
-                    <span class="btn-s btn-white">Details</span>
+                    <span class="btn-s btn-white">Projekt entdecken</span>
                     <a href="https://mitwirken.stadt-zuerich.ch/processes/pilotquartier/f/664/proposals/2334" target="_blank" class="btn-s btn-lime" onclick="event.stopPropagation()">Jetzt Voten</a>
                 </div>
             </div>
@@ -174,16 +171,28 @@
     </div>
 
     <section id="tauschpunkt" class="detail-view">
-        <span class="back-link" onclick="showOverview()">← Übersicht</span>
-        <h2 style="font-family: 'Space Grotesk'; font-size: 3.5rem; margin-bottom: 30px;">tauschpunkt.</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 800px;">„tauschpunkt.“ steht für einfache Tausch-Stationen im öffentlichen Raum, an denen gebrauchte Alltagsgegenstände gratis weitergegeben werden können. Die Idee baut auf der bestehenden Praxis von „Gratis“-Objekten auf der Strasse auf und entwickelt sie weiter – mit wettergeschützter, klar gestalteter und legaler Infrastruktur.</p>
-        <a href="https://mitwirken.stadt-zuerich.ch/processes/pilotquartier/f/664/proposals/2298" target="_blank" class="btn-large btn-p">Projekt unterstützen</a>
+        <span class="back-link" onclick="showOverview()">← Zurück zur Übersicht</span>
+        <h2 style="font-family: 'Space Grotesk'; font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 20px;">tauschpunkt.</h2>
+        
+        <div class="detail-content">
+            <h3>Konzeptbeschreibung:</h3>
+            <p>„tauschpunkt.“ steht für einfache Tausch-Stationen im öffentlichen Raum, an denen gebrauchte Alltagsgegenstände gratis weitergegeben werden können. Die Idee baut auf der bestehenden Praxis von „Gratis“-Objekten auf der Strasse auf und entwickelt sie weiter – mit wettergeschützter, klar gestalteter und legaler Infrastruktur.</p>
+            <p>Ein Netzwerk solcher Stationen fördert Ressourcenschonung, Kreislaufwirtschaft und nachbarschaftlichen Austausch. Gleichzeitig entsteht ein offenes Sharing-System für die ganze Stadt, das nachhaltiges Handeln sichtbar und einfach macht.</p>
+            <p><i>Das Konzept wurde im Rahmen einer Diplomarbeit im Studiengang HF Produktdesign an der SfGZ entwickelt.</i></p>
+
+            <h3>Vision tauschpunkt:</h3>
+            <p>Eine Stadt, in der Teilen selbstverständlich ist: Öffentliche Tausch-Stationen machen es einfach, gebrauchte Dinge weiterzugeben statt wegzuwerfen – zugänglich für alle, mitten im Alltag.</p>
+            <p>So entsteht ein stadtweites Netzwerk, das Ressourcen schont, Abfall reduziert und Menschen verbindet. Aus spontanen Gesten wird eine gelebte Kultur des Teilens, die Nachbarschaften stärkt und neue Begegnungen ermöglicht.</p>
+            <p>Die Vision ist ein Zürich, in dem Kreislaufdenken sichtbar und erlebbar wird – praktisch, sozial und nachhaltig.</p>
+        </div>
+        
+        <a href="https://mitwirken.stadt-zuerich.ch/processes/pilotquartier/f/664/proposals/2298" target="_blank" class="btn-large btn-p">Projekt jetzt unterstützen</a>
     </section>
 
     <section id="playground" class="detail-view">
-        <span class="back-link" onclick="showOverview()">← Übersicht</span>
-        <h2 style="font-family: 'Space Grotesk'; font-size: 3.5rem; margin-bottom: 20px;">Playground Binzallee.</h2>
-        <p>Transformation eines hitzeanfälligen Innenhofs in einen klimaaktiven Stadtraum.</p>
+        <span class="back-link" onclick="showOverview()">← Zurück zur Übersicht</span>
+        <h2 style="font-family: 'Space Grotesk'; font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 20px;">Playground Binzallee.</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 40px;">Transformation eines hitzeanfälligen Innenhofs in einen klimaaktiven Stadtraum.</p>
         
         <div class="slider-wrap">
             <img src="IMG_2031.png" class="slider-img">
@@ -196,31 +205,33 @@
             </div>
             <input type="range" min="0" max="100" value="50" class="slider-input" oninput="moveSlider(this.value)">
         </div>
+        <a href="https://mitwirken.stadt-zuerich.ch/processes/pilotquartier/f/664/proposals/2334" target="_blank" class="btn-large btn-p">Jetzt Voten</a>
     </section>
 
     <section id="mitwirken">
         <div class="mitwirken-container">
             <h2>Mitwirken.</h2>
-            <p>Hast Du etwas in Deinem Kreis oder Quartier neu, weiter oder zu Ende gedacht? Mehr Potenzial erkannt?</p>
-            <p>Bringe Deine Idee zu Themen wie Gestaltung, Begegnung, Klima, Qualität, Bewegung, Mobilität, Sozialprojekte oder Unterhaltung ein. Züri mitentwickeln und prägen!</p>
+            <p>Hast Du etwas in Deinem Kreis oder Quartier neu, weiter oder zu Ende gedacht? Mehr Potenzial erkannt? <br>Bringe Deine Idee ein. Züri mitentwickeln und prägen!</p>
             
-            <span class="mitwirken-highlight">«Jede Ahstoss zellt zumne no bessere Züri.»</span>
-            
+            <ul class="modern-list">
+                <li>Teile Deine Vision</li>
+                <li>Erwecke Faszination</li>
+                <li>Finde Mitbestreiter</li>
+                <li>Präge das Stadtleben</li>
+            </ul>
+
             <div class="mitwirken-actions">
                 <a href="mailto:stadt@impulzh.com" class="btn-large btn-p">Idee einreichen</a>
-                <a href="https://www.instagram.com/stadt.impulzh" target="_blank" class="btn-large btn-i">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                    Folge uns
-                </a>
             </div>
         </div>
     </section>
 
     <section id="vision">
         <div class="vision-container">
-            <h2>Unsere Vision.</h2>
-            <p><strong>stadt.impulzh</strong> wird zur digitalen Plattform, auf der aus Ideen echte Veränderung entsteht. Hier treffen sich Menschen aus Zürich, die ihre Stadt aktiv mitgestalten wollen – offen, kreativ und gemeinschaftlich.</p>
-            <p>Ein Ort, der nicht nur Ideen sammelt, sondern Menschen aktiviert. Eine digitale Heimat für alle, die Zürich lebenswerter, vielfältiger und zukunftsfähiger machen wollen. </p>
+            <h2>VISION stadt.impulzh</h2>
+            <p>Stadt.Impulzh wird zur digitalen Plattform, auf der aus Ideen echte Veränderung entsteht. Hier treffen sich Menschen aus Zürich, die ihre Stadt aktiv mitgestalten wollen – offen, kreativ und gemeinschaftlich. Die Website inspiriert dazu, Potenziale im eigenen Quartier zu erkennen und mutig neu zu denken.</p>
+            <p>Sie macht Visionen sichtbar, verbindet Gleichgesinnte und gibt Projekten den Raum, zu wachsen – von der ersten Idee bis zur Umsetzung. Ob es um nachhaltige Mobilität, lebendige Begegnungsräume oder soziale Initiativen geht: Stadt.Impulzh fördert den Austausch, bündelt Kräfte und bringt Bewegung in die Stadtentwicklung.</p>
+            <p>Unser Ziel ist eine Plattform, die nicht nur Ideen sammelt, sondern Menschen aktiviert. Eine digitale Heimat für alle, die Zürich lebenswerter, vielfältiger und zukunftsfähiger machen wollen. Denn jede Idee zählt – und gemeinsam entsteht daraus ein besseres Zürich.</p>
         </div>
     </section>
 
