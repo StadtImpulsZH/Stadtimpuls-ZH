@@ -65,9 +65,8 @@
             cursor: pointer; display: flex; flex-direction: column; justify-content: flex-end; padding: 40px;
             transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-        .preview-card:hover { transform: scale(0.98); }
         .preview-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: 0.6s; }
-        .preview-card:hover img { transform: scale(1.1); }
+        .preview-card:hover img { transform: scale(1.05); }
         .preview-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%); z-index: -1; }
         .preview-card h2 { font-family: 'Space Grotesk'; color: white; font-size: 2.5rem; margin-bottom: 20px; }
         
@@ -86,18 +85,22 @@
         .project-header { margin-bottom: 60px; }
         .project-header h2 { font-family: 'Space Grotesk'; font-size: clamp(3rem, 10vw, 6rem); line-height: 0.9; margin-bottom: 20px; }
         
-        .project-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: start; }
+        .project-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: start; }
         
         .project-main-content h3 { font-family: 'Space Grotesk'; font-size: 1.8rem; margin: 40px 0 20px; color: var(--purple); position: relative; }
         .project-main-content h3::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 3px; background: var(--lime); }
         .project-main-content p { font-size: 1.2rem; margin-bottom: 25px; color: #333; }
         .project-main-content i { display: block; border-left: 3px solid var(--lime); padding-left: 20px; margin: 30px 0; font-style: normal; opacity: 0.7; }
 
+        /* --- KREATIVE GALERIE --- */
         .project-sidebar-visuals { position: sticky; top: 120px; }
-        .side-img { width: 100%; border-radius: 24px; margin-bottom: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); object-fit: cover; }
+        .gallery-main { width: 100%; aspect-ratio: 4/5; border-radius: 24px; object-fit: cover; margin-bottom: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); transition: 0.3s; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .gallery-thumb { width: 100%; aspect-ratio: 1/1; border-radius: 12px; object-fit: cover; cursor: pointer; opacity: 0.6; transition: 0.3s; }
+        .gallery-thumb:hover, .gallery-thumb.active { opacity: 1; transform: translateY(-3px); }
         
-        /* --- SLIDER STYLES --- */
-        .slider-wrap { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 24px; overflow: hidden; margin-bottom: 20px; }
+        /* --- SLIDER --- */
+        .slider-wrap { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 24px; overflow: hidden; }
         .slider-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
         #slider-front { clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%); }
         .slider-bar { position: absolute; top: 0; left: 50%; width: 2px; height: 100%; background: white; transform: translateX(-50%); pointer-events: none; }
@@ -106,13 +109,11 @@
         .slider-input { position: absolute; inset: 0; opacity: 0; cursor: ew-resize; width: 100%; }
 
         .detail-cta { margin-top: 40px; display: inline-block; padding: 20px 40px; border-radius: 50px; background: var(--purple); color: white; text-decoration: none; font-weight: 800; text-transform: uppercase; transition: 0.3s; }
-        .detail-cta:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(106, 48, 147, 0.2); }
 
         /* --- MITWIRKEN --- */
-        #mitwirken { padding: 120px 5%; background: var(--gray); position: relative; }
+        #mitwirken { padding: 120px 5%; background: var(--gray); }
         .mitwirken-container { max-width: 900px; margin: 0 auto; text-align: center; }
         .mitwirken-container h2 { font-family: 'Space Grotesk'; font-size: clamp(3rem, 8vw, 4.5rem); margin-bottom: 30px; }
-        
         .modern-list { list-style: none; display: inline-block; text-align: left; margin: 40px 0; }
         .modern-list li { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 20px; }
         .modern-list li::before { content: ''; width: 30px; height: 4px; background: var(--lime); display: inline-block; border-radius: 2px; }
@@ -194,12 +195,17 @@
                 <p>Eine Stadt, in der Teilen selbstverständlich ist: Öffentliche Tausch-Stationen machen es einfach, gebrauchte Dinge weiterzugeben statt wegzuwerfen – zugänglich für alle, mitten im Alltag.</p>
                 <p>So entsteht ein stadtweites Netzwerk, das Ressourcen schont, Abfall reduziert und Menschen verbindet. Aus spontanen Gesten wird eine gelebte Kultur des Teilens, die Nachbarschaften stärkt und neue Begegnungen ermöglicht.</p>
                 <p>Die Vision ist ein Zürich, in dem Kreislaufdenken sichtbar und erlebbar wird – praktisch, sozial und nachhaltig.</p>
-                
                 <a href="https://mitwirken.stadt-zuerich.ch/processes/pilotquartier/f/664/proposals/2298" target="_blank" class="detail-cta">Projekt unterstützen</a>
             </div>
             <div class="project-sidebar-visuals">
-                <img src="Bild.tauschpunkt1.png" class="side-img" alt="tauschpunkt Modell">
-                <img src="Bild.tauschpunkt2.png" class="side-img" style="transform: rotate(-1deg);" alt="tauschpunkt Detailansicht">
+                <img src="Bild.tauschpunkt1.png" id="main-tausch-img" class="gallery-main" alt="tauschpunkt Fokus">
+                <div class="gallery-grid">
+                    <img src="Bild.tauschpunkt1.png" class="gallery-thumb active" onclick="updateGallery(this.src, this)" alt="T1">
+                    <img src="Bild.tauschpunkt2.png" class="gallery-thumb" onclick="updateGallery(this.src, this)" alt="T2">
+                    <img src="Bild.tauschpunkt3.png" class="gallery-thumb" onclick="updateGallery(this.src, this)" alt="T3">
+                    <img src="Bild.tauschpunkt4.png" class="gallery-thumb" onclick="updateGallery(this.src, this)" alt="T4">
+                    <img src="Bild.tauschpunkt1.png" class="gallery-thumb" onclick="updateGallery(this.src, this)" alt="T5">
+                </div>
             </div>
         </div>
     </section>
@@ -217,7 +223,6 @@
                 
                 <h3>Vision Playground</h3>
                 <p>Das Projekt reduziert Hitzeinseln und verbessert das Mikroklima nachhaltig. Es transformiert einen reinen Durchgangsraum in einen lebendigen, generationenübergreifenden Treffpunkt und schafft eine neue dreidimensionale Raumqualität im Quartier.</p>
-                
                 <a href="https://mitwirken.stadt-zuerich.ch/processes/pilotquartier/f/664/proposals/2334" target="_blank" class="detail-cta">Jetzt Voten</a>
             </div>
             <div class="project-sidebar-visuals">
@@ -283,6 +288,11 @@
         function moveSlider(val) {
             document.getElementById('slider-front').style.clipPath = `polygon(0 0, ${val}% 0, ${val}% 100%, 0 100%)`;
             document.getElementById('slider-line').style.left = `${val}%`;
+        }
+        function updateGallery(src, el) {
+            document.getElementById('main-tausch-img').src = src;
+            document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
         }
     </script>
 </body>
